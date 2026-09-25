@@ -46,70 +46,111 @@ st.set_page_config(
 def apply_custom_css():
     st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
     
     html, body, [class*="css"] {
         font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    
+
+    /* Core layout sizing */
     .block-container {
         max-width: 1240px;
-        padding-top: 1.5rem;
+        padding-top: 1.2rem;
         padding-bottom: 3.5rem;
     }
     
+    /* Modern Pulsing Status Indicators */
+    @keyframes pulse-dot {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(0.85); }
+    }
+    
+    .dot-green {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        margin-right: 6px;
+        box-shadow: 0 0 8px #10b981;
+        animation: pulse-dot 2s infinite ease-in-out;
+    }
+    
+    .dot-blue {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #3b82f6;
+        border-radius: 50%;
+        margin-right: 6px;
+        box-shadow: 0 0 8px #3b82f6;
+        animation: pulse-dot 2.5s infinite ease-in-out;
+    }
+    
+    .dot-purple {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #a855f7;
+        border-radius: 50%;
+        margin-right: 6px;
+        box-shadow: 0 0 8px #a855f7;
+        animation: pulse-dot 3s infinite ease-in-out;
+    }
+
     /* Brand Header Styles */
     .brand-hero {
         text-align: center;
-        padding: 1.6rem 1.2rem 2rem 1.2rem;
-        background: radial-gradient(circle at top, rgba(99, 102, 241, 0.18) 0%, rgba(15, 23, 42, 0.6) 70%);
+        padding: 2.2rem 1.4rem 2.4rem 1.4rem;
+        background: linear-gradient(180deg, rgba(30, 27, 75, 0.4) 0%, rgba(15, 23, 42, 0.85) 100%);
         border: 1px solid #334155;
-        border-radius: 16px;
-        margin-bottom: 1.5rem;
+        border-radius: 18px;
+        margin-bottom: 1.8rem;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
     }
     
     .academic-badge {
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        background: rgba(99, 102, 241, 0.2);
-        color: #a5b4fc;
-        border: 1px solid rgba(99, 102, 241, 0.45);
+        background: rgba(99, 102, 241, 0.16);
+        color: #c7d2fe;
+        border: 1px solid rgba(99, 102, 241, 0.4);
         font-size: 11.5px;
         font-weight: 700;
-        padding: 4px 14px;
+        padding: 5px 16px;
         border-radius: 9999px;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.6px;
         margin-bottom: 12px;
         text-transform: uppercase;
     }
     
     .brand-title {
-        font-size: 40px;
+        font-size: 44px;
         font-weight: 800;
-        letter-spacing: -0.5px;
+        letter-spacing: -0.8px;
         margin-bottom: 6px;
     }
     
     .brand-gradient {
-        background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
     
     .brand-subtitle {
-        font-size: 18px;
+        font-size: 19px;
         font-weight: 700;
-        color: #f1f5f9;
-        margin-bottom: 6px;
+        color: #f8fafc;
+        margin-bottom: 8px;
     }
     
     .brand-desc {
         font-size: 14.5px;
         color: #94a3b8;
-        max-width: 740px;
+        max-width: 760px;
         margin: 0 auto;
-        line-height: 1.55;
+        line-height: 1.6;
     }
     
     /* Academic Pipeline Flow Bar */
@@ -119,22 +160,23 @@ def apply_custom_css():
         align-items: center;
         justify-content: center;
         gap: 8px;
-        margin-top: 16px;
+        margin-top: 20px;
     }
     
     .flow-step-pill {
         background: #1e293b;
-        color: #cbd5e1;
+        color: #e2e8f0;
         border: 1px solid #334155;
-        padding: 5px 12px;
-        border-radius: 6px;
+        padding: 6px 14px;
+        border-radius: 8px;
         font-size: 12px;
         font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     
     .flow-step-arrow {
-        color: #64748b;
-        font-size: 11px;
+        color: #818cf8;
+        font-size: 12px;
         font-weight: 800;
     }
     
@@ -143,21 +185,82 @@ def apply_custom_css():
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: #1e293b;
-        border: 1px solid #334155;
-        padding: 12px 18px;
+        background: #111827;
+        border: 1px solid #1f2937;
+        padding: 13px 20px;
         border-radius: 12px;
         margin-bottom: 18px;
+        box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.35);
+    }
+    
+    /* Streamlit Chat Message Cards */
+    div[data-testid="stChatMessage"] {
+        background: #111827 !important;
+        border: 1px solid #1f2937 !important;
+        border-radius: 14px !important;
+        padding: 1.1rem 1.3rem !important;
+        margin-bottom: 1rem !important;
+        color: #f3f4f6 !important;
+        box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.3) !important;
+    }
+    div[data-testid="stChatMessage"] p, 
+    div[data-testid="stChatMessage"] span, 
+    div[data-testid="stChatMessage"] div {
+        color: #f3f4f6 !important;
+    }
+
+    /* Streamlit Buttons Styling */
+    div[data-testid="stButton"] > button {
+        background: #1e293b !important;
+        color: #f1f5f9 !important;
+        border: 1px solid #334155 !important;
+        border-radius: 10px !important;
+        padding: 0.65rem 1.1rem !important;
+        font-weight: 600 !important;
+        font-size: 13.5px !important;
+        letter-spacing: -0.2px !important;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+    }
+    div[data-testid="stButton"] > button:hover {
+        background: #334155 !important;
+        border-color: #6366f1 !important;
+        color: #ffffff !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 16px rgba(99, 102, 241, 0.25) !important;
+    }
+    div[data-testid="stButton"] > button[kind="primary"] {
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+        border: none !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4) !important;
+    }
+    div[data-testid="stButton"] > button[kind="primary"]:hover {
+        background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%) !important;
+        box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6) !important;
+        transform: translateY(-2px) !important;
+    }
+
+    /* Form Fields & Text Inputs */
+    div[data-testid="stTextInput"] input,
+    div[data-testid="stTextArea"] textarea,
+    div[data-testid="stNumberInput"] input,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] {
+        background-color: #111827 !important;
+        color: #f9fafb !important;
+        border: 1px solid #374151 !important;
+        border-radius: 10px !important;
     }
     
     /* Snapshot & Metric Cards in Sidebar */
     .snapshot-box {
-        background: #1e293b !important;
-        border: 1px solid #334155 !important;
+        background: #111827 !important;
+        border: 1px solid #1f2937 !important;
         border-radius: 12px !important;
         padding: 14px 16px !important;
         margin-bottom: 14px !important;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25) !important;
+        box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.3) !important;
         color: #f8fafc !important;
     }
     
@@ -197,16 +300,28 @@ def apply_custom_css():
         text-align: right !important;
     }
     
-    .dimension-row {
-        display: flex !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        color: #cbd5e1 !important;
-        font-size: 12px !important;
-        padding: 3px 0 !important;
+    /* Dimension Bars */
+    .dim-wrapper {
+        margin-bottom: 8px;
     }
-    .dimension-row b {
-        color: #818cf8 !important;
+    .dim-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: #cbd5e1;
+        margin-bottom: 4px;
+    }
+    .dim-bar-bg {
+        width: 100%;
+        height: 6px;
+        background: #334155;
+        border-radius: 999px;
+        overflow: hidden;
+    }
+    .dim-bar-fill {
+        height: 100%;
+        border-radius: 999px;
+        background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
     }
     
     /* Tag Provenance Pill */
@@ -219,28 +334,32 @@ def apply_custom_css():
         letter-spacing: 0.3px;
         margin-left: 5px;
     }
-    .prov-user { background: rgba(59, 130, 246, 0.2); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.45); }
-    .prov-calc { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.45); }
-    .prov-inferred { background: rgba(168, 85, 247, 0.2); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.45); }
-    .prov-est { background: rgba(245, 158, 11, 0.2); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.45); }
+    .prov-user { background: rgba(59, 130, 246, 0.25); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.5); }
+    .prov-calc { background: rgba(16, 185, 129, 0.25); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.5); }
+    .prov-inferred { background: rgba(168, 85, 247, 0.25); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.5); }
+    .prov-est { background: rgba(245, 158, 11, 0.25); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.5); }
     
-    /* High-Contrast Conversational Advisor Cards */
+    /* High-Contrast Conversational Advisor Spotlight Box (Solid Midnight Indigo) */
     .advisor-question-box {
-        background: rgba(99, 102, 241, 0.14) !important;
-        border: 1.5px solid #6366f1 !important;
-        border-left: 5px solid #818cf8 !important;
-        border-radius: 10px !important;
-        padding: 14px 18px !important;
+        background: #1e1b4b !important;
+        border: 1px solid #4338ca !important;
+        border-left: 6px solid #818cf8 !important;
+        border-radius: 12px !important;
+        padding: 16px 20px !important;
         margin-top: 14px !important;
         color: #ffffff !important;
+        box-shadow: 0 6px 20px -2px rgba(0, 0, 0, 0.4) !important;
     }
     .advisor-q-badge {
         color: #a5b4fc !important;
-        font-size: 11px !important;
+        font-size: 11.5px !important;
         font-weight: 800 !important;
         text-transform: uppercase !important;
-        letter-spacing: 0.5px !important;
-        margin-bottom: 6px !important;
+        letter-spacing: 0.6px !important;
+        margin-bottom: 7px !important;
+        display: flex;
+        align-items: center;
+        gap: 6px;
     }
     .advisor-q-text {
         color: #ffffff !important;
@@ -249,15 +368,17 @@ def apply_custom_css():
         line-height: 1.5 !important;
     }
     
+    /* High-Contrast Immediate Action Box (Solid Deep Emerald) */
     .advisor-step-box {
-        background: rgba(16, 185, 129, 0.12) !important;
-        border: 1.5px solid #10b981 !important;
-        border-left: 5px solid #34d399 !important;
-        border-radius: 10px !important;
-        padding: 11px 16px !important;
+        background: #064e3b !important;
+        border: 1px solid #059669 !important;
+        border-left: 6px solid #34d399 !important;
+        border-radius: 11px !important;
+        padding: 12px 18px !important;
         margin-top: 10px !important;
         color: #ffffff !important;
-        font-size: 13.5px !important;
+        font-size: 14px !important;
+        box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.3) !important;
     }
     .advisor-step-badge {
         color: #34d399 !important;
@@ -265,7 +386,7 @@ def apply_custom_css():
         margin-right: 6px !important;
     }
     .advisor-step-text {
-        color: #ecfdf5 !important;
+        color: #ffffff !important;
         font-weight: 600 !important;
     }
     
@@ -278,8 +399,8 @@ def apply_custom_css():
     }
     
     .fin-pill {
-        background: #1e293b !important;
-        border: 1px solid #334155 !important;
+        background: #111827 !important;
+        border: 1px solid #1f2937 !important;
         border-radius: 8px !important;
         padding: 9px 12px !important;
         color: #f8fafc !important;
@@ -299,14 +420,14 @@ def apply_custom_css():
     /* NLP Token Tag */
     .nlp-token {
         display: inline-block;
-        background: rgba(139, 92, 246, 0.2);
-        color: #c4b5fd;
-        border: 1px solid rgba(139, 92, 246, 0.4);
+        background: rgba(139, 92, 246, 0.25);
+        color: #ddd6fe;
+        border: 1px solid rgba(139, 92, 246, 0.5);
         border-radius: 4px;
-        padding: 2px 7px;
+        padding: 3px 8px;
         font-family: 'JetBrains Mono', monospace;
-        font-size: 11px;
-        margin: 2px;
+        font-size: 11.5px;
+        margin: 3px;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -1219,6 +1340,53 @@ def generate_heuristic_response(history, prof, fin, intent, user_msg):
         "immediate_next_step": step
     }
 
+def generate_markdown_report(prof, fin, score, ml_res):
+    """Generates an executive downloadable one-page markdown brief."""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    return f"""# StartupSense AI – Executive Business Advisory Brief
+**Venture:** {prof.get('business_type')}  
+**Location:** {prof.get('location')} | **Stage:** {prof.get('business_stage')}  
+**Assessment Score:** {score.get('final_score', 75)}/100  
+**Generated:** {timestamp}  
+
+---
+
+## 1. Executive Business Profile
+- **Industry Category:** {prof.get('industry')}
+- **Target Customer Segment:** {prof.get('target_customer')}
+- **Primary Problem Solved:** {prof.get('problem')}
+- **Product / Line:** {prof.get('product_service')}
+- **Market Scope:** {prof.get('market')}
+
+---
+
+## 2. Deterministic Financial Structure (Python Engine)
+- **Initial Capital / Budget:** ₹{fin.get('initial_investment', 0):,.0f} [{fin.get('initial_investment_tag')}]
+- **Projected Monthly Revenue:** ₹{fin.get('monthly_revenue', 0):,.0f} [{fin.get('monthly_revenue_tag')}]
+- **Projected Monthly Operating Costs:** ₹{fin.get('monthly_expenses', 0):,.0f} [{fin.get('monthly_expenses_tag')}]
+- **Projected Monthly Operating Surplus:** ₹{fin.get('monthly_surplus', 0):,.0f} [PYTHON CALCULATED]
+- **Estimated Operating Runway:** {fin.get('runway_text')}
+- **Estimated Breakeven:** {fin.get('break_even_text')}
+
+---
+
+## 3. Recommended Capital Allocation
+1. **Founder Savings (40–50%):** Self-fund initial setup equipment and workspace lease.
+2. **Government Scheme (PMEGP / Mudra ~30–35%):** Leverage PMEGP 15–35% capital subsidy or Mudra collateral-free loan.
+3. **Working Capital Reserve (15–20%):** Strict 60-day buffer to protect against delayed customer receivables.
+
+---
+
+## 4. Academic Evaluation Dimensions
+- **Problem Strength:** {score.get('problem_strength', 75):.0f}%
+- **Market Potential:** {score.get('market_potential', 75):.0f}%
+- **Financial Feasibility:** {score.get('financial_feasibility', 75):.0f}%
+- **Competitive Position:** {score.get('competitive_position', 75):.0f}%
+- **Execution Readiness:** {score.get('execution_readiness', 75):.0f}%
+
+*Disclaimer: StartupSense AI is an academic Natural Language Processing decision-support project.*
+"""
+
 # ==========================================================
 # STREAMLIT UI SETUP: SIDEBAR (SYSTEM ENGINES & LLM CONFIG)
 # ==========================================================
@@ -1272,22 +1440,35 @@ with st.sidebar:
         score = st.session_state["assessment"]
         ml_res = st.session_state["ml_result"]
         
-        # 1. Validation Assessment Score Box
+        # 1. Validation Assessment Score Box with Graphical Progress Bars
         st.markdown(f"""
         <div class="snapshot-box" style="border-top: 3px solid #6366f1;">
             <div class="snapshot-title">
                 <span>Business Assessment</span>
-                <span style="font-size:17px; color:#818cf8; font-weight:800;">{score.get('final_score', 75)}/100</span>
+                <span style="font-size:18px; color:#818cf8; font-weight:800;">{score.get('final_score', 75)}/100</span>
             </div>
-            <div style="font-size:11px; color:#94a3b8; margin-bottom:8px;">
+            <div style="font-size:11px; color:#94a3b8; margin-bottom:10px;">
                 Transparent Python calculation across 5 key dimensions:
             </div>
-            <div style="display:flex; flex-direction:column; gap:4px; font-size:12px;">
-                <div class="dimension-row"><span>Problem Strength</span><b>{score.get('problem_strength', 75):.0f}%</b></div>
-                <div class="dimension-row"><span>Market Potential</span><b>{score.get('market_potential', 75):.0f}%</b></div>
-                <div class="dimension-row"><span>Financial Feasibility</span><b>{score.get('financial_feasibility', 75):.0f}%</b></div>
-                <div class="dimension-row"><span>Competitive Position</span><b>{score.get('competitive_position', 75):.0f}%</b></div>
-                <div class="dimension-row"><span>Execution Readiness</span><b>{score.get('execution_readiness', 75):.0f}%</b></div>
+            <div class="dim-wrapper">
+                <div class="dim-header"><span>Problem Strength</span><b>{score.get('problem_strength', 75):.0f}%</b></div>
+                <div class="dim-bar-bg"><div class="dim-bar-fill" style="width:{score.get('problem_strength', 75):.0f}%;"></div></div>
+            </div>
+            <div class="dim-wrapper">
+                <div class="dim-header"><span>Market Potential</span><b>{score.get('market_potential', 75):.0f}%</b></div>
+                <div class="dim-bar-bg"><div class="dim-bar-fill" style="width:{score.get('market_potential', 75):.0f}%;"></div></div>
+            </div>
+            <div class="dim-wrapper">
+                <div class="dim-header"><span>Financial Feasibility</span><b>{score.get('financial_feasibility', 75):.0f}%</b></div>
+                <div class="dim-bar-bg"><div class="dim-bar-fill" style="width:{score.get('financial_feasibility', 75):.0f}%;"></div></div>
+            </div>
+            <div class="dim-wrapper">
+                <div class="dim-header"><span>Competitive Position</span><b>{score.get('competitive_position', 75):.0f}%</b></div>
+                <div class="dim-bar-bg"><div class="dim-bar-fill" style="width:{score.get('competitive_position', 75):.0f}%;"></div></div>
+            </div>
+            <div class="dim-wrapper">
+                <div class="dim-header"><span>Execution Readiness</span><b>{score.get('execution_readiness', 75):.0f}%</b></div>
+                <div class="dim-bar-bg"><div class="dim-bar-fill" style="width:{score.get('execution_readiness', 75):.0f}%;"></div></div>
             </div>
             <div style="font-size:10px; color:#64748b; margin-top:8px; line-height:1.3;">
                 *{score.get('note', '')}*
@@ -1359,46 +1540,58 @@ with st.sidebar:
         st.divider()
 
     # 3. Persistent System Engines Section
-    st.markdown("##### ⚙️ **System Engines**")
+    st.markdown("##### ⚙️ **System Architecture & Telemetry**")
     hf_token_present = bool(st.secrets.get("HF_TOKEN"))
     if hf_token_present:
         st.markdown(
-            """<div style="padding: 8px 12px; background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.35); border-radius: 8px; margin-bottom: 7px;">
-            <b style="color:#34d399; font-size:12.5px;">● Hugging Face LLM Active</b><br>
-            <span style="font-size:11px; color:#94a3b8;">Qwen 2.5 / DeepSeek / Llama 3.3 Connected</span>
+            """<div style="padding: 10px 14px; background: #111827; border: 1px solid rgba(16,185,129,0.4); border-radius: 10px; margin-bottom: 9px; box-shadow: 0 2px 8px rgba(0,0,0,0.25);">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+                <div><span class="dot-green"></span><b style="color:#34d399; font-size:12.5px;">Hugging Face LLM</b></div>
+                <span style="font-size:10px; background:rgba(16,185,129,0.18); color:#6ee7b7; border:1px solid rgba(16,185,129,0.35); border-radius:4px; padding:1px 6px; font-weight:700;">CLOUD READY</span>
+            </div>
+            <div style="font-size:11px; color:#94a3b8; padding-left:14px; margin-top:2px;">Qwen 2.5 • Llama 3.3 • DeepSeek R1</div>
             </div>""",
             unsafe_allow_html=True
         )
     else:
         st.markdown(
-            """<div style="padding: 8px 12px; background: rgba(244,63,94,0.12); border: 1px solid rgba(244,63,94,0.35); border-radius: 8px; margin-bottom: 7px;">
-            <b style="color:#fb7185; font-size:12.5px;">○ HF_TOKEN Missing</b><br>
-            <span style="font-size:11px; color:#94a3b8;">Add HF_TOKEN in secrets.toml (Heuristic Engine Active)</span>
+            """<div style="padding: 10px 14px; background: #111827; border: 1px solid rgba(244,63,94,0.4); border-radius: 10px; margin-bottom: 9px;">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+                <div><b style="color:#fb7185; font-size:12.5px;">○ HF_TOKEN Standby</b></div>
+                <span style="font-size:10px; background:rgba(244,63,94,0.18); color:#fda4af; border:1px solid rgba(244,63,94,0.35); border-radius:4px; padding:1px 6px; font-weight:700;">HEURISTIC ACTIVE</span>
+            </div>
+            <div style="font-size:11px; color:#94a3b8; padding-left:14px; margin-top:2px;">Add HF_TOKEN in secrets.toml for cloud LLM</div>
             </div>""",
             unsafe_allow_html=True
         )
         
     if ml_available:
         st.markdown(
-            """<div style="padding: 8px 12px; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.35); border-radius: 8px; margin-bottom: 7px;">
-            <b style="color:#60a5fa; font-size:12.5px;">● Random Forest ML Loaded</b><br>
-            <span style="font-size:11px; color:#94a3b8;">31-Feature Crunchbase Model Benchmark</span>
+            """<div style="padding: 10px 14px; background: #111827; border: 1px solid rgba(59,130,246,0.4); border-radius: 10px; margin-bottom: 9px; box-shadow: 0 2px 8px rgba(0,0,0,0.25);">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+                <div><span class="dot-blue"></span><b style="color:#60a5fa; font-size:12.5px;">Random Forest ML</b></div>
+                <span style="font-size:10px; background:rgba(59,130,246,0.18); color:#93c5fd; border:1px solid rgba(59,130,246,0.35); border-radius:4px; padding:1px 6px; font-weight:700;">SCIKIT-LEARN</span>
+            </div>
+            <div style="font-size:11px; color:#94a3b8; padding-left:14px; margin-top:2px;">31-Feature Historical Venture Benchmark</div>
             </div>""",
             unsafe_allow_html=True
         )
     else:
         st.markdown(
-            """<div style="padding: 8px 12px; background: #1e293b; border: 1px solid #334155; border-radius: 8px; margin-bottom: 7px;">
-            <b style="color:#94a3b8; font-size:12.5px;">○ ML Model Benchmark</b><br>
+            """<div style="padding: 9px 12px; background: #111827; border: 1px solid #1f2937; border-radius: 8px; margin-bottom: 8px;">
+            <b style="color:#94a3b8; font-size:12px;">○ ML Benchmark Model</b><br>
             <span style="font-size:11px; color:#64748b;">Crunchbase historical model not found</span>
             </div>""",
             unsafe_allow_html=True
         )
         
     st.markdown(
-        """<div style="padding: 8px 12px; background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.35); border-radius: 8px; margin-bottom: 7px;">
-        <b style="color:#a78bfa; font-size:12.5px;">● NLP Concept Parser</b><br>
-        <span style="font-size:11px; color:#94a3b8;">Entity, Intent & Provenance Engine Active</span>
+        """<div style="padding: 10px 14px; background: #111827; border: 1px solid rgba(168,85,247,0.4); border-radius: 10px; margin-bottom: 9px; box-shadow: 0 2px 8px rgba(0,0,0,0.25);">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+            <div><span class="dot-purple"></span><b style="color:#c084fc; font-size:12.5px;">NLP Concept Parser</b></div>
+            <span style="font-size:10px; background:rgba(168,85,247,0.18); color:#d8b4fe; border:1px solid rgba(168,85,247,0.35); border-radius:4px; padding:1px 6px; font-weight:700;">NLU ENGINE</span>
+        </div>
+        <div style="font-size:11px; color:#94a3b8; padding-left:14px; margin-top:2px;">Entity, Intent & Provenance Engine Active</div>
         </div>""",
         unsafe_allow_html=True
     )
@@ -1487,11 +1680,11 @@ if not st.session_state["session_active"]:
     </div>
     """, unsafe_allow_html=True)
     
-    # 1-Click Demo Buttons Row
+    # 1-Click Demo Buttons Row with styled indicators
     st.markdown("##### 💡 **Instant Academic Demonstrations (1-Click Test):**")
     col_d1, col_d2, col_d3, col_d4 = st.columns(4)
     with col_d1:
-        if st.button("🥛 Village Dairy (₹2L)", use_container_width=True):
+        if st.button("🥛 Village Dairy\n(Agri-Retail • ₹2L)", use_container_width=True):
             d = DEMOS["Village Dairy"]
             st.session_state["input_idea_text"] = d["idea"]
             st.session_state["input_loc_text"] = d["location"]
@@ -1500,7 +1693,7 @@ if not st.session_state["session_active"]:
             st.session_state["input_rev_val"] = d["rev"]
             st.rerun()
     with col_d2:
-        if st.button("🧵 Local Tailoring (₹1.5L)", use_container_width=True):
+        if st.button("🧵 Local Tailoring\n(Apparel Hub • ₹1.5L)", use_container_width=True):
             d = DEMOS["Local Tailoring Hub"]
             st.session_state["input_idea_text"] = d["idea"]
             st.session_state["input_loc_text"] = d["location"]
@@ -1509,7 +1702,7 @@ if not st.session_state["session_active"]:
             st.session_state["input_rev_val"] = d["rev"]
             st.rerun()
     with col_d3:
-        if st.button("🍪 Healthy Snacks (₹3L)", use_container_width=True):
+        if st.button("🍪 Healthy Snacks\n(Packaged FMCG • ₹3L)", use_container_width=True):
             d = DEMOS["Healthy Millet Snacks"]
             st.session_state["input_idea_text"] = d["idea"]
             st.session_state["input_loc_text"] = d["location"]
@@ -1518,7 +1711,7 @@ if not st.session_state["session_active"]:
             st.session_state["input_rev_val"] = d["rev"]
             st.rerun()
     with col_d4:
-        if st.button("🥦 Farm-to-Consumer", use_container_width=True):
+        if st.button("🥦 FarmDirect Hub\n(B2B Supply • Operating)", use_container_width=True):
             d = DEMOS["Farm-to-Consumer Hub"]
             st.session_state["input_idea_text"] = d["idea"]
             st.session_state["input_loc_text"] = d["location"]
@@ -1649,15 +1842,15 @@ else:
     score = st.session_state["assessment"]
     ml_res = st.session_state["ml_result"]
 
-    # MAIN AREA: CHAT CONVERSATION
+    # MAIN AREA: CHAT CONVERSATION STATUS BAR
     st.markdown(f"""
     <div class="chat-status-bar">
         <div>
-            <span style="font-weight:700; color:#f8fafc; font-size:16px;">{prof.get('business_type')}</span>
-            <span style="color:#94a3b8; font-size:13px; margin-left:10px;">📍 {prof.get('location')} &nbsp;|&nbsp; 🏷️ {prof.get('business_stage')}</span>
+            <span style="font-weight:800; color:#f8fafc; font-size:16px;">{prof.get('business_type')}</span>
+            <span style="color:#94a3b8; font-size:13px; margin-left:12px;">📍 {prof.get('location')} &nbsp;|&nbsp; 🏷️ {prof.get('business_stage')}</span>
         </div>
-        <div style="font-size:12px; font-weight:700; color:#818cf8; background:rgba(99, 102, 241, 0.15); border:1px solid rgba(99, 102, 241, 0.35); padding:4px 12px; border-radius:20px;">
-            ● AI Conversational Advisor Active
+        <div style="font-size:12px; font-weight:700; color:#818cf8; background:rgba(99, 102, 241, 0.15); border:1px solid rgba(99, 102, 241, 0.35); padding:5px 14px; border-radius:20px;">
+            <span class="dot-green"></span>AI Conversational Advisor Active
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1766,9 +1959,15 @@ else:
             
         st.rerun()
 
-    # Expandable Full Business Summary (On Demand, NOT Cluttered)
-    with st.expander("📋 View Comprehensive Business Summary & Financial Plan (On Demand)", expanded=False):
-        tab_sum, tab_fin, tab_comp, tab_risk = st.tabs(["📊 Business Profile", "💰 Capital & Finance", "⚔️ Competitors", "⚠️ Top Risks"])
+    # Expandable Full Business Summary & Plan (On Demand, NOT Cluttered)
+    with st.expander("📋 View Comprehensive Business Summary & Export Plan (On Demand)", expanded=False):
+        tab_sum, tab_fin, tab_comp, tab_risk, tab_export = st.tabs([
+            "📊 Business Profile", 
+            "💰 Capital & Finance", 
+            "⚔️ Competitors", 
+            "⚠️ Top Risks",
+            "📥 Download Plan"
+        ])
         
         with tab_sum:
             st.markdown(f"""
@@ -1814,3 +2013,15 @@ else:
                 st.markdown(f"*{r['why']}*")
                 st.markdown(f"**Mitigation:** {r['mitigation']}")
                 st.markdown("---")
+                
+        with tab_export:
+            st.markdown("#### Export Executive Business Plan")
+            st.caption("Download the complete synthesized business model and financial scenario report.")
+            md_doc = generate_markdown_report(prof, fin, score, ml_res)
+            st.download_button(
+                label="📥 Download Executive Advisory Report (.md)",
+                data=md_doc,
+                file_name=f"StartupSense_{prof.get('business_type', 'Venture').replace(' ', '_')}_Plan.md",
+                mime="text/markdown",
+                use_container_width=True
+            )
